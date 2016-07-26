@@ -11,9 +11,14 @@ class TestEngine < MiniTest::Test
   end
 
 
-  def test_acceleration_turbo()
+  def test_turbo_engine_fuel_consumption()
+    @turbo_engine.fuel_consumption
+    assert_equal(10, @turbo_engine.fuel_consumption)
+  end
+
+
+  def test_turbo_engine_acceleration()
     @turbo_engine.acceleration
-    assert_equal(90, @turbo_engine.fuel_consumption)
     assert_equal(25, @turbo_engine.acceleration)
   end
 
