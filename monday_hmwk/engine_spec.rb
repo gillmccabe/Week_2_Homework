@@ -1,6 +1,5 @@
 require('minitest/autorun')
 require('minitest/rg')
-require_relative('car')
 require_relative('engine')
 
 class TestEngine < MiniTest::Test
