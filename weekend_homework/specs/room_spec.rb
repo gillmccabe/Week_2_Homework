@@ -21,7 +21,7 @@ class TestRoom < Minitest::Test
 
 
   def test_room_capacity
-    assert_equal(20, @room1.room_capacity)
+    assert_equal(2, @room1.room_capacity)
   end
 
 
@@ -29,6 +29,26 @@ class TestRoom < Minitest::Test
     @room1.add_guest_to_room(@charley)
     assert_equal([@charley], @room1.room_singers)
   end
+
+
+  def test_can_not_add_guest_to_room_beyond_capacity
+    @room1.add_guest_to_room(@charley)
+    @room1.add_guest_to_room(@katrina)
+    @room1.add_guest_to_room(@hannah)
+    assert_equal("Sorry room is too full to add another singer", @room1.add_guest_to_room(@hannah))
+  end
+
+  def test_add_guest_does_have_enough_money
+    @room1.add_guest_to_room_money(@gillian)
+    assert_equal([@gillian], @room1.room_singers)
+  end
+
+
+  def test_add_guest_does_not_have_enough_money
+    @room1.add_guest_to_room_money(@hannah)
+    assert_equal("Sorry you do not have enough money", @room1.add_guest_to_room_money(@hannah))
+  end
+
 
   def test_can_remove_guest_from_room
     @room1.remove_guest_from_room(@charley)
